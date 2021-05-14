@@ -1,0 +1,15 @@
+---
+- name: "[REMIL]"
+  hosts: all
+  
+  tasks:
+  - name: installation de nginx
+    yum:
+     name: nginx
+     state: present
+
+  - name: edition du port
+    template:
+          src: default.j2
+          dest: /etc/nginx/sites-available/default
+    notify: nginx_reload
